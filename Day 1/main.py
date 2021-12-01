@@ -1,16 +1,20 @@
 
-previous_reading = -1
+previous_sum = -1
 increasing = 0
 data = []
+sums = []
 
-with open('data') as f:    data = [int(i.strip()) for i in f.readlines()]
+with open('Day 1/data') as f:    data = [int(i.strip()) for i in f.readlines()]
 
-for reading in data:
+for index in range(2,len(data)):
+    sums.append(data[index-2]+data[index-1]+data[index])
+
+for sum in sums:
     
-    if previous_reading > 0 and reading > previous_reading:
+    if previous_sum > 0 and sum > previous_sum:
         increasing += 1
         
-    previous_reading = reading
+    previous_sum = sum
     
 
 print(increasing)
