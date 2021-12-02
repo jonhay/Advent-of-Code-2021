@@ -1,6 +1,7 @@
 
 horizontal = 0
 depth = 0
+aim = 0
 
 with open('Day 2/data') as f:    data = [i.strip() for i in f.readlines()]
 
@@ -11,10 +12,11 @@ for i in range(0,len(data)):
 
     if direction == "forward":
         horizontal += increment
+        depth += (increment * aim)
     elif direction == "down":
-        depth += increment
+        aim += increment
     elif direction == "up":
-        depth -= increment
+        aim -= increment
 
 
 product = horizontal * depth
