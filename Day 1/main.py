@@ -1,3 +1,5 @@
+# Solution for https://adventofcode.com/2021/day/1
+# By Jon Hay
 
 previous_sum = -1
 increasing = 0

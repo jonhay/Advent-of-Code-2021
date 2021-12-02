@@ -1,3 +1,5 @@
+# Solution for https://adventofcode.com/2021/day/2
+# By Jon Hay
 
 horizontal = 0
 depth = 0
