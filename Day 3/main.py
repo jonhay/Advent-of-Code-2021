@@ -6,6 +6,10 @@ gamma_bin = ""
 epsilon_bin = ""
 gamma_int = 0
 epsilon_int = 0
+o2_bin = ""
+co2_bin = ""
+o2_int = 0
+co2_int = 0
 
 with open('Day 3/data') as f:    data = [i.strip() for i in f.readlines()]
 
@@ -52,3 +56,37 @@ power_consumption = gamma_int * epsilon_int
 
 print(f"Power Consumption: {power_consumption}")
 
+kept_data = []
+def filter_data(data_input, select_for, bit_mask):
+    print("start")
+    new_list = []
+
+    marker = 0
+    con_count = 0
+    new_counter = 0
+    old_counter = 0
+    previous_match = True
+
+    for bit in range(0, len(bit_mask)):
+        for reading in range(0, len(data_input)):
+            data_bit = data_input[reading][bit]
+            if data_bit == bit_mask[bit] and previous_match and con_counter :
+                print("count")
+                con_counter += 1
+                marker = reading
+                con_counter = bit
+            else:
+                con_counter = 0
+            print(f"Count : {con_count}")
+
+    return data_input[marker]
+
+o2_bin = filter_data(data, "1", gamma_bin)
+co2_bin = filter_data(data, "0", epsilon_bin)
+
+
+print(f"o2 Bin: {o2_bin}")
+print(f"co2 Bin: {co2_bin}")
+
+print(f"o2 Int: {int(o2_bin,2)}")
+print(f"co2 Int: {int(co2_bin,2)}")
