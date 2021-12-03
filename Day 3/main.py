@@ -1,7 +1,7 @@
 # Solution for https://adventofcode.com/2021/day/3
 # By Jon Hay
 
-gamma_rate_one_counter = [0,0,0,0,0,0,0,0,0,0,0,0,]
+
 gamma_bin = ""
 epsilon_bin = ""
 gamma_int = 0
@@ -9,22 +9,34 @@ epsilon_int = 0
 
 with open('Day 3/data') as f:    data = [i.strip() for i in f.readlines()]
 
-for reading in data:
-    for i in range(0,len(reading)):
-        if reading[i] == "1":
-            gamma_rate_one_counter[i] += 1
+def count_ones(data_input):
+    one_frequency_counter = [0,0,0,0,0,0,0,0,0,0,0,0,]
+    for reading in data_input:
+        for i in range(0,len(reading)):
+            if reading[i] == "1":
+                one_frequency_counter[i] += 1
+    return one_frequency_counter
 
+def get_significant_bits(counts_imput):
+    significant_bits = ""
+    for bit in range(0, len(counts_imput)):
+        if counts_imput[bit] >= (len(data) / 2):
+            significant_bits += "1"
+        else:
+            significant_bits += "0"
+    return significant_bits
 
-print(f"Number of Readings: {len(data)}")
-print(f"One bit counts: {gamma_rate_one_counter}")
+def invert_bin(bin_string):
+    new_bit_string = ""
+    for bit in range(0,len(bin_string)):
+        if bin_string[bit] == "1":
+            new_bit_string += "0"
+        else:
+            new_bit_string += "1"
+    return new_bit_string
 
-for bit in range(0, len(gamma_rate_one_counter)):
-    if gamma_rate_one_counter[bit] < (len(data) / 2):
-        gamma_bin += "0"
-        epsilon_bin += "1"
-    else:
-        gamma_bin += "1"
-        epsilon_bin += "0"
+gamma_bin = get_significant_bits(count_ones(data))
+epsilon_bin = invert_bin(gamma_bin)
 
 
 print(f"Gamma Bin: {gamma_bin}")
