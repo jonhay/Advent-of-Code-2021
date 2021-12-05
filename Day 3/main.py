@@ -2,7 +2,7 @@
 # By Jon Hay
 from collections import Counter
 
-data = [x for x in open('Day 3\data').read().strip().split('\n')]
+data = [x for x in open('Day 3/data').read().strip().split('\n')]
 
 gamma = ''
 epsilon = ''
@@ -15,7 +15,7 @@ for bit in range(len(data[0])):
 		data = [x for x in data if x[bit] == '1']
 	gamma = data[0]
 
-data = [x for x in open('Day 3\data').read().strip().split('\n')]
+data = [x for x in open('Day 3/data').read().strip().split('\n')]
 for bit in range(len(data[0])):
 	common = Counter([x[bit] for x in data])
 
